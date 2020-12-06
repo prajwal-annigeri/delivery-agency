@@ -1,0 +1,43 @@
+{% extends "admin_layout.html" %} {% block title %} Add Schedule {% endblock %}
+{% block content %}
+
+<section class="section">
+    <div class="container">
+      <h1 class="title">Add a schedule</h1>
+    </div>
+  </section>
+  
+  
+  
+  <div class="container">
+    <form action="{{url_for('date_selected')}}" method="POST">
+      <div class="field">
+        <label class="label">Select Date</label>
+        <div class="control has-icons-left">
+          <input
+            class="input"
+            type="date"
+            id="schedule_date"
+            name="schedule_date"
+            autocomplete="off"
+            required
+            style="width:400px;"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-calendar"></i>
+          </span>
+        </div>
+      </div>
+  
+      
+  
+      <div class="field" style="padding: 10px;">
+          <input type="submit" class="button is-primary", value="Confirm Date">
+  
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+{% endblock %}

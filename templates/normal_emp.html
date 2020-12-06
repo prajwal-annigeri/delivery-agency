@@ -1,0 +1,69 @@
+{% extends 'nonadmin_layout.html' %} {% block title %} Check Schedule
+{%endblock%} {%block content%} {%for schedule in s_ids_list %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Schedule ID: {{schedule[0]}}</h1>
+    <h2 class="subtitle">
+      Date: {{schedule[1].strftime('%d-%m-%Y')}}, Vehicle: {{schedule[2]}}
+    </h2>
+
+    {%for sid_date, customer_info in s_ids_list|zip(s_orders_lists) %} {% if
+    schedule[0] == sid_date[0] %}
+    <table class="table is-striped is-hoverable">
+      <thead>
+        <th>Order ID</th>
+        <th>Customer Name</th>
+        <th>Customer Phone</th>
+        <th>Customer Address</th>
+        <th>Paytype</th>
+        <th>Customer Covid</th>
+        <th>Priority</th>
+        <th>Set as delivered</th>
+      </thead>
+
+      <tbody>
+        {% for customer in customer_info %}
+        <tr>
+          <td>{{customer[0]}}</td>
+          <td>{{customer[2] + ' ' + customer[3]}}</td>
+          <td>{{customer[4]}}</td>
+          <td>{{customer[5]}}</td>
+          <td>{{customer[1]}}</td>
+          {% if customer[6] == 1 %}
+          <td>Positive</td>
+          {% else %}
+          <td>Negative</td>
+          {% endif%}
+
+          <td>{{customer[7]}}</td>
+
+          <td>
+            <form action="/delivery_done" method="POST">
+              <input
+                type="submit"
+                class="button is-success"
+                value="Delivered"
+              />
+              <input
+                type="hidden"
+                name="id_of_delivered"
+                value="{{customer[0]}}"
+              />
+              <input
+                type="hidden"
+                name="schedule_check"
+                value="{{schedule[0]}}"
+              />
+            </form>
+          </td>
+        </tr>
+        {%endfor%} {% endif %}
+      </tbody>
+    </table>
+
+    {% endfor %}
+  </div>
+</section>
+
+{%endfor%} {%endblock%}

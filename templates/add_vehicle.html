@@ -1,0 +1,75 @@
+{% extends 'admin_layout.html' %} {% block title %} Add Vehicle {%endblock%}
+{%block content%}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Add a vehicle</h1>
+  </div>
+</section>
+
+
+
+<div class="container">
+  <form action="{{url_for('vehicle_added')}}" method="POST">
+    <div class="field">
+      <label class="label">Vehicle reg. number</label>
+      <div class="control has-icons-left">
+        <input
+          class="input"
+          type="text"
+          placeholder="Eg:KA09XY1234"
+          id="vehicle_input"
+          name="vreg"
+          autocomplete="off"
+          required
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-hashtag"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Vehicle Model</label>
+      <div class="control has-icons-left">
+        <input
+          class="input"
+          type="text"
+          placeholder="Vehicle model"
+          id="vehicle_input"
+          name="vmodel"
+          autocomplete="off"
+          required
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-car"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Vehicle Type</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          class="input"
+          type="text"
+          placeholder="Eg:Motorcycle"
+          id="vehicle_input"
+          name="vtype"
+          autocomplete="off"
+          required
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-motorcycle"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field" style="padding: 10px;">
+        <input type="submit" class="button is-primary", value="Add vehicle">
+
+      </div>
+    </div>
+  </form>
+</div>
+{%endblock%}

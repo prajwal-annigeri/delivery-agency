@@ -1,0 +1,125 @@
+{% extends 'admin_layout.html' %} {% block title %} Add Employee {%endblock%}
+{%block content%}
+
+<section class="section">
+    <div class="container">
+      <h1 class="title">Add an employee</h1>
+    </div>
+  </section>
+  
+  
+  
+  <div class="container">
+    <form action="{{url_for('employee_added')}}" method="POST">
+      <div class="field">
+        <label class="label">Set new employee ID</label>
+        <div class="control has-icons-left">
+          <input
+            class="input"
+            type="number"
+            placeholder="Employee ID"         
+            name="eid"
+            autocomplete="off"
+            id="vehicle_input"
+            required
+            min="1"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-address-card"></i>
+          </span>
+        </div>
+      </div>
+  
+      <div class="field">
+        <label class="label">First Name</label>
+        <div class="control has-icons-left">
+          <input
+            class="input"
+            type="text"
+            placeholder="First Name"
+            autocomplete="off"
+            name="efname"
+            id="vehicle_input"
+            required
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </div>
+      </div>
+  
+      <div class="field">
+        <label class="label">Last name</label>
+        <div class="control has-icons-left has-icons-right">
+          <input
+            class="input"
+            type="text"
+            placeholder="Last Name"
+            autocomplete="off"
+            name="elname"
+            id="vehicle_input"
+            required
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Phone number</label>
+        <div class="control has-icons-left">
+          <input
+            class="input"
+            type="tel"
+            placeholder="Phone number"
+            id="vehicle_input"
+            name="ephone"
+            autocomplete="off"
+            required
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-phone"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Set password</label>
+        <div class="control has-icons-left">
+          <input
+            class="input"
+            type="password"
+            placeholder="Set password"
+            id="vehicle_input"
+            name="epassword"
+            required
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-key"></i>
+          </span>
+        </div>
+      </div>
+
+      <div style="padding: 10px;">
+        <div class="control">
+            <label class="radio">
+            <input type="radio" name="admin" value="Not an admin" checked> 
+            Not an admin
+            </label>
+            <label class="radio">
+            <input type="radio" name="admin" value="Admin">
+            Admin
+            </label>
+        </div>
+      </div>
+  
+      <div class="field" style="padding: 10px;">
+          <input type="submit" class="button is-primary", value="Add employee">
+  
+        </div>
+      </div>
+    </form>
+  </div>
+
+{%endblock%}

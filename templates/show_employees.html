@@ -1,0 +1,28 @@
+{% extends 'admin_layout.html' %} {% block title %} Employees {%endblock%} {%
+block content %}
+
+<div class="container" style="padding-top: 30px">
+  <table class="table is-striped is-fullwidth">
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Admin</th>
+    </thead>
+    <tbody>
+      {% for employee in employees %}
+      <tr>
+        <td>{{employee[0]}}</td>
+        <td>{{employee[1] + ' ' + employee[2]}}</td>
+        <td>{{employee[3]}}</td>
+        {%if employee[4] == 1 %}
+        <td>Yes</td>
+        {%else%}
+        <td>No</td>
+        {%endif%}
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

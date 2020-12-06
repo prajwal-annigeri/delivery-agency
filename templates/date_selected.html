@@ -1,0 +1,64 @@
+{% extends "admin_layout.html" %} {% block title %} Add Schedule {% endblock %}
+{% block content %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Selected Date {{date}}</h1>
+  </div>
+</section>
+
+<div class="container">
+  <form action="{{url_for('schedule_added')}}" method="POST">
+    <div class="field">
+      <label class="label">Schedule ID</label>
+      <div class="control">
+        <input
+          class="input"
+          type="number"
+          placeholder="Set ID"
+          min="0"
+          name="set_id"
+          style="width: 400px"
+        />
+      </div>
+    </div>
+    <div class="select">
+      <select name="emp_id">
+        <option disabled selected value="">Select Employee</option>
+        {% for e_id in available_eids %}
+        <option value="{{e_id}}">{{e_id}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="select">
+      <select name="v_reg">
+        <option disabled selected value="">Select Vehicle</option>
+        {% for v_reg in available_vregs %}
+        <option value="{{v_reg}}">{{v_reg}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <br />
+    <br />
+    <br />
+
+    {%for order in orders_available%}
+    <div class="table">
+      <label class="checkbox">
+        <input
+          type="checkbox"
+          style="padding: 10px"
+          value="{{order[0]}}"
+          name="order_checkbox"
+        />
+        Order ID: {{order[0]}}, {{order[1]}}
+      </label>
+    </div>
+    {%endfor%}
+    <br />
+    <input type="submit" value="Set schedule" class="button is-primary" />
+  </form>
+</div>
+
+{% endblock %}

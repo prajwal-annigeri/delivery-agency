@@ -1,0 +1,37 @@
+{% extends "customer_layout.html" %} {%block title %}Track orders {%endblock%}
+{% block content%}
+<div class="container" style="padding-top: 30px">
+  <table class="table is-striped is-fullwidth">
+    <thead>
+      <th>Order ID</th>
+      <th>Delivery expected by</th>
+      <th>Delivery Agent Name</th>
+      <th>Delivery Agent Phone</th>
+      <th>Amount</th>
+      <th>Pay Type</th>
+    </thead>
+    <tbody>
+      {% for order in orders_on_schedule %}
+      <tr>
+        <td>{{order[0]}}</td>
+        <td>{{order[3].strftime('%d-%m-%Y')}}</td>
+        <td>{{order[5]}}</td>
+        <td>{{order[4]}}</td>
+        <td>{{order[7]}}</td>
+        <td>{{order[6]}}</td>
+      </tr>
+      {% endfor %} {% for order in orders_not_on_schedule %}
+      <tr>
+        <td>{{order[0]}}</td>
+        <td>To be set</td>
+        <td>To be set</td>
+        <td>To be set</td>
+        <td>{{order[2]}}</td>
+        <td>{{order[1]}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{%endblock%}

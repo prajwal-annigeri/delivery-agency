@@ -1,4 +1,4 @@
 dbusername__ = "root"
-dbpassword__ = "Nightfuryjce721"
+dbpassword__ = ""
 dbhost__ = "localhost"
-dbname__ = "del_deploy"
+dbname__ = ""
